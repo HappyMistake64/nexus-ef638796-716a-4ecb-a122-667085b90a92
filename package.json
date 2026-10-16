@@ -1,0 +1,32 @@
+{
+  "name": "city-forge",
+  "version": "0.1.2",
+  "private": true,
+  "description": "Lokální demonstrátor dopravní uzavírky se SUMO",
+  "main": "desktop/main.cjs",
+  "scripts": {
+    "build": "tsc --noEmit && vite build && electron-builder --linux dir",
+    "start": "electron ."
+  },
+  "dependencies": {
+    "maplibre-gl": "^5.0.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "electron": "^40.0.0",
+    "electron-builder": "^26.0.12",
+    "typescript": "^5.9.3",
+    "vite": "^7.3.0"
+  },
+  "build": {
+    "appId": "cz.cityforge.local",
+    "productName": "CITY FORGE",
+    "directories": { "output": "release" },
+    "files": ["desktop/**/*", "dist/**/*", "package.json"],
+    "extraResources": [{ "from": "backend", "to": "backend", "filter": ["**/*.py", "**/*.json"] }],
+    "linux": { "target": ["dir"], "category": "Science", "executableName": "city-forge" }
+  }
+}

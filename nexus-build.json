@@ -1,0 +1,11 @@
+{
+  "runtime": "custom",
+  "runner": "ubuntu-latest",
+  "install": "sudo apt-get update && sudo apt-get install -y sumo util-linux python3-venv libnss3 libgtk-3-0 libgbm1 libasound2t64 && /usr/bin/python3 -m venv .venv && .venv/bin/python -m pip install -r requirements.txt && npm install --no-audit --no-fund && .venv/bin/python -m backend.doctor",
+  "build": "npm run build",
+  "test": ".venv/bin/python -m backend.doctor && .venv/bin/python -m pytest -q tests",
+  "artifacts": [
+    "release/linux-unpacked",
+    "dist"
+  ]
+}

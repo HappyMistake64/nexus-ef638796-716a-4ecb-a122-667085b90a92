@@ -1,0 +1,40 @@
+name: NEXUS build
+run-name: NEXUS-${{ inputs.operation }}
+on:
+  workflow_dispatch:
+    inputs:
+      operation:
+        description: NEXUS build identifier
+        required: true
+        type: string
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065
+        with:
+          python-version: "3.12"
+      - name: Install dependencies
+        run: python .nexus/run.py install
+      - name: Build software
+        run: python .nexus/run.py build
+      - name: Run tests
+        run: python .nexus/run.py test
+      - name: Upload build output
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: nexus-build-${{ inputs.operation }}
+          if-no-files-found: error
+          retention-days: 14
+          path: |
+            release/linux-unpacked
+            dist

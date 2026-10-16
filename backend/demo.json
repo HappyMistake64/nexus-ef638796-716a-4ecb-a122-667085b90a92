@@ -1,0 +1,20 @@
+{
+  "name": "Ukázková čtvrť – most a severní objížďka",
+  "source": "Syntetická data CITY FORGE", "license": "CC0-1.0", "valid_on": "2026-01-15",
+  "timezone": "Europe/Prague", "crs": "LOCAL_METRES",
+  "nodes": [
+    {"id":"w","x":0,"y":0}, {"id":"a","x":300,"y":0},
+    {"id":"b","x":600,"y":0}, {"id":"h","x":900,"y":0},
+    {"id":"c","x":300,"y":250}, {"id":"d","x":600,"y":250}
+  ],
+  "edges": [
+    {"id":"prijezd","source":"w","target":"a","speed":13.9},
+    {"id":"most","source":"a","target":"b","speed":13.9},
+    {"id":"nemocnice","source":"b","target":"h","speed":13.9},
+    {"id":"sever","source":"a","target":"c","speed":8.3},
+    {"id":"objizdka","source":"c","target":"d","speed":5.6},
+    {"id":"jih","source":"d","target":"b","speed":8.3}
+  ],
+  "origin":"w", "hospital":"h", "cars":180,
+  "bus_departures":[0,120,240,360,480,600]
+}
