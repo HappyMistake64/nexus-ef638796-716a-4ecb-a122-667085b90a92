@@ -9,14 +9,14 @@
     "start": "electron ."
   },
   "dependencies": {
-    "maplibre-gl": "^5.0.0",
+    "maplibre-gl": "^6.15.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },
   "devDependencies": {
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
-    "electron": "^40.0.0",
+    "electron": "^45.0.0",
     "electron-builder": "^26.0.12",
     "typescript": "^5.9.3",
     "vite": "^7.3.0"
